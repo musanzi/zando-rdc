@@ -1,12 +1,4 @@
-#zando-rdc-web {
-  .admin-side-panel {
-    --mat-dialog-container-shape: 0;
-
-    .mat-mdc-dialog-surface {
-      overflow: hidden;
-    }
-  }
-
+#exhibitors-web {
   /* ------------------------------------------------------------------------ */
   /* Typography                                                               */
   /* ------------------------------------------------------------------------ */
@@ -121,42 +113,54 @@
   /* Color                                                                    */
   /* ------------------------------------------------------------------------ */
 
-  /* Shared dark surfaces and accessible brand colors. */
-  --mat-sys-background: #121212;
-  --mat-sys-on-background: #ffffff;
-  --mat-sys-surface: #1c1c1c;
-  --mat-sys-surface-dim: #121212;
-  --mat-sys-surface-bright: #353535;
-  --mat-sys-surface-tint: var(--color-primary-600);
-  --mat-sys-surface-variant: #292929;
-  --mat-sys-surface-container-lowest: #121212;
-  --mat-sys-surface-container-low: #181818;
-  --mat-sys-surface-container: #222222;
-  --mat-sys-surface-container-high: #292929;
-  --mat-sys-surface-container-highest: #353535;
-  --mat-sys-on-surface: #ffffff;
-  --mat-sys-on-surface-variant: #c7c7c7;
+  /* Background */
+  --mat-sys-background: var(--color-neutral-100);
+  --mat-sys-on-background: var(--color-neutral-950);
+
+  /* Surface */
+  --mat-sys-surface: var(--color-neutral-100);
+  --mat-sys-surface-dim: var(--color-neutral-100);
+  --mat-sys-surface-bright: var(--color-white);
+  --mat-sys-surface-tint: var(--color-primary-50);
+  --mat-sys-surface-variant: var(--color-neutral-50);
+  --mat-sys-surface-container-lowest: var(--color-white);
+  --mat-sys-surface-container-low: var(--color-neutral-50);
+  --mat-sys-surface-container: var(--color-neutral-100);
+  --mat-sys-surface-container-high: var(--color-neutral-200);
+  --mat-sys-surface-container-highest: var(--color-neutral-300);
+  --mat-sys-on-surface: var(--color-neutral-950);
+  --mat-sys-on-surface-variant: var(--color-neutral-600);
+
+  /* Primary */
   --mat-sys-primary: var(--color-primary-600);
-  --mat-sys-primary-container: #49260f;
+  --mat-sys-primary-container: var(--color-primary-50);
   --mat-sys-primary-fixed: var(--color-primary-600);
   --mat-sys-primary-fixed-dim: var(--color-primary-500);
-  --mat-sys-on-primary: #121212;
-  --mat-sys-on-primary-container: #ffd9bf;
-  --mat-sys-on-primary-fixed: #121212;
-  --mat-sys-on-primary-fixed-variant: #121212;
-  --mat-sys-error: #ffb4ab;
-  --mat-sys-error-container: #690005;
-  --mat-sys-on-error: #690005;
-  --mat-sys-on-error-container: #ffdad6;
-  --mat-sys-outline: #888888;
-  --mat-sys-outline-variant: #454545;
-  --mat-sys-scrim: #000000;
-  --mat-sys-shadow: #000000;
-  --mat-sys-inverse-primary: #914000;
-  --mat-sys-inverse-surface: #eeeeee;
-  --mat-sys-inverse-on-surface: #121212;
-  --mat-sys-neutral-variant20: #353535;
-  --mat-sys-neutral10: #1c1c1c;
+  --mat-sys-on-primary: var(--color-primary-50);
+  --mat-sys-on-primary-container: var(--color-primary-950);
+  --mat-sys-on-primary-fixed: var(--color-primary-50);
+  --mat-sys-on-primary-fixed-variant: var(--color-primary-50);
+
+  /* Error */
+  --mat-sys-error: var(--color-error-600);
+  --mat-sys-error-container: var(--color-error-50);
+  --mat-sys-on-error: var(--color-error-50);
+  --mat-sys-on-error-container: var(--color-error-950);
+
+  /* Others */
+  --mat-sys-outline: var(--color-neutral-300);
+  --mat-sys-outline-variant: var(--color-neutral-300);
+  --mat-sys-scrim: var(--color-neutral-950);
+  --mat-sys-shadow: var(--color-black);
+
+  /* Inverse */
+  --mat-sys-inverse-primary: var(--color-primary-600);
+  --mat-sys-inverse-surface: var(--color-neutral-900);
+  --mat-sys-inverse-on-surface: var(--color-white);
+
+  /* Angular Material fixed color extensions */
+  --mat-sys-neutral-variant20: var(--color-neutral-900);
+  --mat-sys-neutral10: var(--color-neutral-950);
 
   /* Angular Material shadow extensions */
   --mat-sys-level0:
@@ -219,7 +223,7 @@
   /* Badge                                                                    */
   /* ------------------------------------------------------------------------ */
   --mat-badge-background-color: var(--color-primary-600);
-  --mat-badge-text-color: var(--color-on-primary);
+  --mat-badge-text-color: var(--color-primary-50);
 
   /* ------------------------------------------------------------------------ */
   /* Bottom Sheet                                                             */
@@ -229,13 +233,13 @@
   /* ------------------------------------------------------------------------ */
   /* Button                                                                   */
   /* ------------------------------------------------------------------------ */
-  --mat-button-text-container-shape: 0.5rem;
+  --mat-button-text-container-shape: 0.75rem;
   --mat-button-text-container-height: 2.5rem;
   --mat-button-text-horizontal-padding: 0.75rem;
   --mat-button-text-with-icon-horizontal-padding: 0.75rem;
   --mat-button-text-icon-offset: 0rem;
 
-  --mat-button-outlined-container-shape: 0.5rem;
+  --mat-button-outlined-container-shape: 0.75rem;
   --mat-button-outlined-container-height: 2.5rem;
   --mat-button-outlined-horizontal-padding: 0.75rem;
   --mat-button-outlined-icon-offset: 0rem;
@@ -243,17 +247,17 @@
   --mat-button-outlined-state-layer-color: var(--color-primary-600);
   --mat-button-outlined-ripple-color: color-mix(in oklch, var(--color-primary-600) 10%, transparent);
 
-  --mat-button-tonal-container-shape: 0.5rem;
+  --mat-button-tonal-container-shape: 0.75rem;
   --mat-button-tonal-container-height: 2.5rem;
   --mat-button-tonal-horizontal-padding: 0.75rem;
   --mat-button-tonal-icon-offset: 0rem;
 
-  --mat-button-filled-container-shape: 0.5rem;
+  --mat-button-filled-container-shape: 0.75rem;
   --mat-button-filled-container-height: 2.5rem;
   --mat-button-filled-horizontal-padding: 0.75rem;
   --mat-button-filled-icon-offset: 0rem;
 
-  --mat-button-protected-container-shape: 0.5rem;
+  --mat-button-protected-container-shape: 0.75rem;
   --mat-button-protected-container-height: 2.5rem;
   --mat-button-protected-horizontal-padding: 0.75rem;
   --mat-button-protected-icon-offset: 0rem;
@@ -264,7 +268,7 @@
 
   .mat-mdc-button-base {
     --mat-icon-color: currentColor;
-    /* Primary actions: solid orange with dark labels. */
+    /* Primary actions: solid orange with white labels. */
     --mat-button-filled-container-color: var(--color-secondary);
     --mat-button-filled-label-text-color: var(--color-on-secondary);
     --mat-button-protected-container-color: var(--color-secondary);
@@ -273,14 +277,14 @@
     --mat-button-protected-ripple-color: color-mix(in oklch, var(--color-on-secondary) 10%, transparent);
 
     /* Tonal actions have a subtle fill; outlined and text actions stay distinct. */
-    --mat-button-tonal-container-color: color-mix(in srgb, var(--color-secondary) 15%, var(--mat-sys-surface));
+    --mat-button-tonal-container-color: color-mix(in srgb, var(--color-secondary) 15%, white);
     --mat-button-tonal-label-text-color: var(--color-primary-600);
     --mat-button-tonal-state-layer-color: var(--color-primary-600);
     --mat-button-tonal-ripple-color: color-mix(in oklch, var(--color-primary-600) 10%, transparent);
     --mat-button-text-label-text-color: var(--color-primary-600);
     --mat-button-text-state-layer-color: var(--color-primary-600);
     --mat-button-text-ripple-color: color-mix(in oklch, var(--color-primary-600) 10%, transparent);
-    --mat-button-outlined-outline-color: var(--mat-sys-outline-variant);
+    --mat-button-outlined-outline-color: var(--color-neutral-300);
 
     &:focus-visible:not(.cdk-program-focused) {
       outline-color: var(--color-primary-600);
@@ -302,7 +306,7 @@
       height: auto;
       max-width: 100%;
       padding-block: 0.5rem;
-      border-radius: 0.375rem;
+      border-radius: 0.75rem;
       line-height: 1.25rem;
       white-space: normal;
 
@@ -357,7 +361,7 @@
     height: auto;
     min-height: 2.5rem;
     max-width: 100%;
-    border-radius: 0.375rem;
+    border-radius: 0.75rem;
     white-space: normal;
   }
 
@@ -380,13 +384,13 @@
   /* Card                                                                     */
   /* ------------------------------------------------------------------------ */
   --mat-card-elevated-container-shape: 0.75rem;
-  --mat-card-elevated-container-color: var(--mat-sys-surface-container-low);
+  --mat-card-elevated-container-color: var(--color-white);
 
   --mat-card-filled-container-shape: 0.75rem;
-  --mat-card-filled-container-color: var(--mat-sys-surface-container);
+  --mat-card-filled-container-color: var(--color-neutral-100);
 
   --mat-card-outlined-container-shape: 0.75rem;
-  --mat-card-outlined-container-color: var(--mat-sys-surface-container-low);
+  --mat-card-outlined-container-color: var(--color-white);
 
   mat-card {
     /* Raised */
@@ -407,10 +411,10 @@
       }
 
       .mat-mdc-card-content {
-        background: var(--mat-sys-surface-container-low);
+        background: var(--color-white);
         border-radius: 0.5rem;
         padding: 1rem;
-        border: 1px solid var(--mat-sys-outline-variant);
+        border: 1px solid var(--color-neutral-200);
       }
     }
   }
@@ -420,8 +424,8 @@
   /* ------------------------------------------------------------------------ */
   --mat-checkbox-state-layer-size: 2.25rem;
 
-  /* Keep the secondary accent scoped to interactive controls. Use dark text
-     on orange fills and orange text on dark containers. */
+  /* Keep the secondary accent scoped to interactive controls. Use white text
+     on orange fills and dark text on light containers. */
   .mat-mdc-button-base,
   .mat-mdc-form-field,
   .mat-mdc-checkbox,
@@ -430,13 +434,13 @@
   .mat-mdc-select-panel {
     --mat-sys-primary: var(--color-secondary);
     --mat-sys-on-primary: var(--color-on-secondary);
-    --mat-sys-primary-container: color-mix(in srgb, var(--color-secondary) 15%, var(--mat-sys-surface));
+    --mat-sys-primary-container: color-mix(in srgb, var(--color-secondary) 15%, white);
     --mat-sys-on-primary-container: var(--color-primary-600);
   }
 
   .mat-mdc-select-panel {
     --mat-option-selected-state-label-text-color: var(--color-primary-600);
-    --mat-option-selected-state-layer-color: color-mix(in srgb, var(--color-secondary) 15%, var(--mat-sys-surface));
+    --mat-option-selected-state-layer-color: color-mix(in srgb, var(--color-secondary) 15%, white);
   }
 
   /* ------------------------------------------------------------------------ */
@@ -445,12 +449,10 @@
 
   .event-status,
   .catalog-status,
-  .team-status,
-  .participation-status,
-  .reminder-status {
-    --status-color: var(--mat-sys-on-surface-variant);
-    --status-background: var(--mat-sys-surface-container);
-    --status-border: var(--mat-sys-outline-variant);
+  .attendance-status {
+    --status-color: var(--color-neutral-600);
+    --status-background: var(--color-neutral-100);
+    --status-border: var(--color-neutral-200);
     --mat-chip-container-height: 1.625rem;
     --mat-chip-container-shape-radius: 9999px;
     --mat-chip-label-text-size: 0.75rem;
@@ -467,12 +469,9 @@
 
   .event-status[data-status='active'],
   .catalog-status[data-status='active'],
-  .team-status[data-status='active'],
-  .participation-status[data-status='active'],
-  .participation-status[data-status='APPROVED'],
-  .participation-status[data-status='PARTIALLY_APPROVED'],
-  .reminder-status[data-status='delivered'],
-  .reminder-status[data-status='complete'] {
+  .attendance-status[data-status='active'],
+  .attendance-status[data-status='APPROVED'],
+  .attendance-status[data-status='PARTIALLY_APPROVED'] {
     --status-color: var(--color-emerald-700);
     --status-background: var(--color-emerald-50);
     --status-border: var(--color-emerald-200);
@@ -484,24 +483,21 @@
     --status-border: var(--color-sky-200);
   }
 
-  .participation-status[data-status='PENDING'],
-  .reminder-status[data-status='incomplete'] {
+  .attendance-status[data-status='PENDING'] {
     --status-color: var(--color-amber-800);
     --status-background: var(--color-amber-50);
     --status-border: var(--color-amber-200);
   }
 
-  .participation-status[data-status='REJECTED'] {
+  .attendance-status[data-status='REJECTED'] {
     --status-color: var(--color-red-700);
     --status-background: var(--color-red-50);
     --status-border: var(--color-red-200);
   }
 
   .event-status[data-status='unscheduled'],
-  .catalog-status[data-status='inactive'],
-  .team-status[data-status='inactive'],
-  .reminder-status[data-status='pending'] {
-    --status-background: var(--mat-sys-surface-container-low);
+  .catalog-status[data-status='inactive'] {
+    --status-background: var(--color-white);
   }
 
   /* ------------------------------------------------------------------------ */
@@ -521,15 +517,31 @@
     }
   }
 
+  /* mat-option */
+  --mat-option-label-text-size: var(--text-base); /* 14px */
+  --mat-option-label-text-line-height: var(--leading-5); /* 20px */
+
+  .mat-mdc-option {
+    min-height: 2.25rem;
+  }
+
+  /* ------------------------------------------------------------------------ */
+  /* Datepicker                                                               */
+  /* ------------------------------------------------------------------------ */
+  --mat-datepicker-calendar-container-background-color: var(--color-white);
+
+  --mat-datepicker-calendar-container-elevation-shadow: var(--mat-sys-level2);
+  --mat-datepicker-calendar-container-shape: 0.5rem; /* 8px */
+
   /* ------------------------------------------------------------------------ */
   /* Dialog                                                                   */
   /* ------------------------------------------------------------------------ */
-  --mat-dialog-container-shape: 0.375rem;
-  --mat-dialog-container-color: var(--mat-sys-surface-container-low);
+  --mat-dialog-container-shape: 1rem;
+  --mat-dialog-container-color: var(--color-white);
 
   .mat-mdc-dialog-container {
-    --color-surface: var(--mat-sys-surface-container-low);
-    --mat-sys-surface: var(--mat-sys-surface-container-low);
+    --color-surface: var(--color-white);
+    --mat-sys-surface: var(--color-white);
   }
 
   .mat-mdc-dialog-surface {
@@ -542,27 +554,6 @@
       max-height: inherit;
     }
   }
-
-  /* mat-option */
-  --mat-option-label-text-size: var(--text-base); /* 14px */
-  --mat-option-label-text-line-height: var(--leading-5); /* 20px */
-
-  .mat-mdc-option {
-    min-height: 2.25rem;
-  }
-
-  /* ------------------------------------------------------------------------ */
-  /* Datepicker                                                               */
-  /* ------------------------------------------------------------------------ */
-  --mat-datepicker-calendar-container-background-color: var(--mat-sys-surface-container-low);
-
-  --mat-datepicker-calendar-container-elevation-shadow: var(--mat-sys-level2);
-  --mat-datepicker-calendar-container-shape: 0.5rem; /* 8px */
-
-  /* ------------------------------------------------------------------------ */
-  /* Dialog                                                                   */
-  /* ------------------------------------------------------------------------ */
-  --mat-dialog-container-shape: 1rem;
 
   /* ------------------------------------------------------------------------ */
   /* Divider                                                                  */
@@ -891,7 +882,7 @@
     --form-field-subscript-letter-spacing: var(--tracking-normal);
 
     /* Size */
-    --form-field-border-radius: 0.5rem; /* 8px */
+    --form-field-border-radius: 0.75rem; /* 12px */
     --form-field-margin-top: 1.5rem; /* 24px */
     --form-field-padding-y: 0.625rem; /* 10px */
     --form-field-padding-x: 1rem; /* 16px */
@@ -901,15 +892,15 @@
     --form-field-icon-margin-x: -0.125rem; /* -2px */
 
     /* Color */
-    --form-field-text-color: var(--mat-sys-on-surface);
-    --form-field-text-color-error: var(--mat-sys-error);
-    --form-field-hint-color: var(--mat-sys-on-surface-variant);
-    --form-field-placeholder-color: var(--mat-sys-on-surface-variant);
-    --form-field-affix-color: var(--mat-sys-on-surface-variant);
+    --form-field-text-color: var(--color-neutral-950);
+    --form-field-text-color-error: var(--color-error-500);
+    --form-field-hint-color: var(--color-neutral-500);
+    --form-field-placeholder-color: var(--color-neutral-500);
+    --form-field-affix-color: var(--color-neutral-500);
 
-    --form-field-bg-color: var(--mat-sys-surface-container-low);
+    --form-field-bg-color: var(--color-white);
 
-    --form-field-border-color: var(--mat-sys-outline);
+    --form-field-border-color: var(--color-neutral-300);
     --form-field-border-color-error: var(--color-error-600);
 
     --form-field-shadow-color: color-mix(in oklch, var(--color-black), transparent 95%);
@@ -973,16 +964,16 @@
   --mat-list-list-item-one-line-container-height: 2.25rem;
   --mat-list-list-item-label-text-size: var(--text-base);
   --mat-list-list-item-label-text-tracking: var(--tracking-normal);
-  --mat-list-active-indicator-color: var(--mat-sys-outline-variant);
+  --mat-list-active-indicator-color: var(--color-neutral-200);
 
   /* ------------------------------------------------------------------------ */
   /* Menu                                                                     */
   /* ------------------------------------------------------------------------ */
   --mat-menu-container-shape: 0.5rem;
-  --mat-menu-container-color: var(--mat-sys-surface-container-low);
+  --mat-menu-container-color: var(--color-white);
   --mat-menu-divider-bottom-spacing: 0.25rem;
   --mat-menu-divider-top-spacing: 0.25rem;
-  --mat-menu-divider-color: var(--mat-sys-outline-variant);
+  --mat-menu-divider-color: var(--color-neutral-200);
 
   --mat-menu-item-icon-color: currentColor;
   --mat-menu-item-icon-size: 1rem;
@@ -1000,12 +991,12 @@
   /* ------------------------------------------------------------------------ */
   /* Paginator                                                                */
   /* ------------------------------------------------------------------------ */
-  --mat-paginator-container-background-color: var(--mat-sys-surface-container-low);
+  --mat-paginator-container-background-color: var(--color-white);
 
   /* ------------------------------------------------------------------------ */
   /* Progress Bar                                                             */
   /* ------------------------------------------------------------------------ */
-  --mat-progress-bar-track-color: var(--mat-sys-outline-variant);
+  --mat-progress-bar-track-color: var(--color-neutral-200);
 
   .mdc-linear-progress {
     border-radius: 0.5rem;
@@ -1031,7 +1022,7 @@
   --mat-select-trigger-text-line-height: var(--leading-5); /* 20px */
   --mat-select-trigger-text-tracking: var(--tracking-normal);
 
-  --mat-select-panel-background-color: var(--mat-sys-surface-container-low);
+  --mat-select-panel-background-color: var(--color-white);
 
   .mat-mdc-select-arrow-wrapper {
     height: 1.25rem; /* 20px */
@@ -1050,11 +1041,11 @@
   /* ------------------------------------------------------------------------ */
   /* Sidenav                                                                  */
   /* ------------------------------------------------------------------------ */
-  --mat-sidenav-container-background-color: var(--mat-sys-surface-container);
-  --mat-sidenav-sidenav-background-color: var(--mat-sys-surface-container);
-  --mat-sidenav-content-background-color: var(--mat-sys-surface-container-low);
+  --mat-sidenav-container-background-color: var(--color-neutral-100);
+  --mat-sidenav-sidenav-background-color: var(--color-neutral-100);
+  --mat-sidenav-content-background-color: var(--color-neutral-100);
 
-  --mat-sidenav-container-text-color: var(--mat-sys-on-surface);
+  --mat-sidenav-container-text-color: var(--color-neutral-950);
 
   --mat-sidenav-container-shape: 0;
   --mat-sidenav-container-divider-color: transparent;
@@ -1105,7 +1096,7 @@
 
   /* handle icon colors */
   --mat-slide-toggle-unselected-icon-color: color-mix(in oklch, var(--color-black) 40%, transparent);
-  --mat-slide-toggle-selected-icon-color: var(--mat-sys-on-surface);
+  --mat-slide-toggle-selected-icon-color: var(--color-neutral-950);
 
   /* ------------------------------------------------------------------------ */
   /* Slider                                                                   */
@@ -1130,13 +1121,128 @@
     --mat-stepper-header-done-state-icon-foreground-color: var(--color-white);
     --mat-stepper-header-edit-state-icon-background-color: var(--color-emerald-600);
     --mat-stepper-header-edit-state-icon-foreground-color: var(--color-white);
+
+    [matStepperNext],
+    [matStepperPrevious] {
+      --mat-button-filled-icon-spacing: 0.25rem;
+      --mat-button-outlined-icon-spacing: 0.25rem;
+    }
+  }
+
+  /* Keep exhibitor preparation usable on phones without changing admin layouts. */
+  @media (width < 1024px) {
+    exhibitor-layout,
+    .exhibitor-dialog {
+      .admin-action,
+      .mat-mdc-icon-button,
+      .mat-button-toggle-button {
+        min-height: 2.75rem;
+      }
+
+      .mat-mdc-icon-button {
+        min-width: 2.75rem;
+      }
+
+      input.mat-mdc-input-element,
+      textarea.mat-mdc-input-element {
+        font-size: 16px;
+      }
+
+      .mat-mdc-paginator-container {
+        justify-content: center;
+        gap: 0.5rem;
+        padding: 0.75rem;
+      }
+
+      .mat-mdc-paginator-range-label {
+        margin-inline: 0.5rem;
+      }
+
+      .mat-mdc-paginator-range-actions {
+        min-width: 0;
+        flex-wrap: wrap;
+        justify-content: center;
+      }
+    }
+
+    exhibitor-layout {
+      .navigation-item {
+        min-height: 2.75rem;
+      }
+
+      .mat-step-label {
+        white-space: normal;
+        overflow-wrap: anywhere;
+      }
+
+      .mat-vertical-stepper-header {
+        padding: 1rem;
+      }
+
+      .mat-vertical-content-container {
+        margin-inline-start: 1.75rem;
+      }
+
+      .mat-vertical-content {
+        padding: 0 0.75rem 1rem;
+      }
+
+      .mat-expansion-panel-body {
+        padding-inline: 0.75rem;
+      }
+    }
+
+    .exhibitor-dialog {
+      --mat-tab-container-height: 2.75rem;
+
+      .mat-mdc-dialog-container header > h2 {
+        min-width: 0;
+        overflow-wrap: anywhere;
+      }
+
+      .mat-mdc-dialog-container header > button {
+        flex-shrink: 0;
+      }
+
+      .mat-mdc-dialog-container footer > .admin-action {
+        flex: 1 1 auto;
+      }
+    }
+  }
+
+  @media (width < 640px) {
+    exhibitor-layout .mat-mdc-paginator-range-label {
+      width: 100%;
+      margin: 0 0 0.5rem;
+      text-align: center;
+    }
   }
 
   /* ------------------------------------------------------------------------ */
   /* Table                                                                    */
   /* ------------------------------------------------------------------------ */
   --mat-table-background-color: transparent;
-  --mat-table-row-item-outline-color: var(--mat-sys-outline-variant);
+  --mat-table-row-item-outline-color: var(--color-neutral-200);
+
+  .mat-mdc-table {
+    --mat-table-header-headline-size: var(--text-md);
+    --mat-table-header-headline-weight: var(--font-weight-semibold);
+    --mat-table-header-headline-color: var(--color-neutral-500);
+    --mat-table-row-item-label-text-size: var(--text-md);
+    --mat-table-row-item-label-text-color: var(--color-neutral-800);
+    --mat-table-header-container-height: 3rem;
+    --mat-table-row-item-container-height: 4rem;
+
+    .mat-mdc-header-cell {
+      background-color: var(--color-neutral-50);
+    }
+
+    .mat-mdc-cell,
+    .mat-mdc-header-cell {
+      padding-inline: 1.5rem;
+      border-bottom-color: var(--color-neutral-200);
+    }
+  }
 
   /* Restore the bottom border on last row */
   .mdc-data-table__row:last-child > .mat-mdc-cell {
@@ -1149,7 +1255,7 @@
   /* Tabs                                                                     */
   /* ------------------------------------------------------------------------ */
   --mat-tab-container-height: 2.5rem;
-  --mat-tab-divider-color: var(--mat-sys-outline-variant);
+  --mat-tab-divider-color: var(--color-neutral-200);
   --mat-tab-label-text-font: var(--font-sans);
   --mat-tab-label-text-size: var(--text-base);
   --mat-tab-label-text-line-height: var(--leading-5);

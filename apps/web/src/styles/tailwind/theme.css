@@ -129,8 +129,8 @@
   --color-primary-950: var(--theme-color-primary-950);
 
   /* Secondary color: use only for buttons and form controls. */
-  --color-secondary: var(--color-primary-600);
-  --color-on-secondary: var(--color-neutral-950);
+  --color-secondary: var(--theme-color-secondary);
+  --color-on-secondary: var(--color-white);
 
   /* Error color palette */
   /* Theme color palette is generated dynamically. Do NOT edit! */

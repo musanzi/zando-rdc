@@ -135,7 +135,6 @@ Follow these repository conventions:
 - After API changes, run `pnpm generate:api` and commit the changes in `libs/api-contracts`. Import types from `@zando-rdc/api-contracts`. Do not edit generated files manually.
 - The generator exports the schema in Nest preview mode without a running API, database, Redis, or SMTP server. The web build, serve, and typecheck commands run the generator automatically.
 - Run `pnpm lint`, `pnpm typecheck`, `pnpm test`, and `pnpm build` before committing application changes. Format changed files with `pnpm exec prettier --write <paths>`. Git hooks run lint and enforce Conventional Commit messages.
-- Use the supplied logos in `apps/web/public/images/logos/`. The theme uses dark surfaces, white text, and the primary orange `#EE731F`. Keep readable contrast and a visible keyboard focus on orange controls.
 
 ## Deploy the application
 

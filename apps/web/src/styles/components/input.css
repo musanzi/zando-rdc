@@ -14,7 +14,7 @@
   /* Variables                                                                */
   /* ------------------------------------------------------------------------ */
   input:not(.restore-autofill-styles) {
-    --input-text-color: var(--color-on-surface);
+    --input-text-color: var(--color-neutral-950);
   }
 
   input,
@@ -32,5 +32,11 @@
   textarea:not([matInput]):focus,
   select:focus {
     border-color: var(--color-secondary);
+  }
+
+  input:not([matInput]):not([type='checkbox']):not([type='radio']):not([type='range']):not([type='color']),
+  textarea:not([matInput]),
+  select:not([matNativeControl]) {
+    border-radius: 0.75rem;
   }
 }
