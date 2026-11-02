@@ -9,7 +9,7 @@ services:
     environment:
       UPLOADS_DIR: /app/apps/api/uploads
     ports:
-      - ${API_PORT:-8000}:${API_PORT}
+      - ${API_PORT}:${API_PORT}
     volumes:
       - ./apps/api/src/modules/database/migrations:/app/apps/api/src/modules/database/migrations
       - uploads_data:/app/apps/api/uploads
@@ -34,8 +34,9 @@ services:
       target: web-development
     restart: unless-stopped
     env_file: ./.env
+    command: ['pnpm', 'exec', 'nx', 'serve', 'web', '--host=0.0.0.0', '--port=${WEB_PORT}']
     ports:
-      - ${WEB_PORT:-4200}:${WEB_PORT}
+      - ${WEB_PORT}:${WEB_PORT}
     develop:
       watch:
         - action: sync
@@ -49,8 +50,8 @@ services:
           target: /app/libs/api-contracts/src
           initial_sync: true
   mailhog:
-    # Keep the SMTP hostname compatible with existing MAIL_HOST=mailhog settings.
-    image: axllent/mailpit:v1.33.0
+    image: mailhog/mailhog:v1.0.1
+    platform: linux/amd64
     restart: unless-stopped
     ports:
       - '8025:8025'
