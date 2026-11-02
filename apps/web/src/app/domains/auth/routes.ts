@@ -12,9 +12,9 @@ const routes: Routes = [
         title: 'Sign In',
         data: {
           authContent: {
-            asideTitle: 'Return to your workspace',
-            asideDescription: 'Sign in to a clear, modular application base that is ready to grow with your features.',
-            asideFootnote: 'Keep a consistent authentication flow while you build the rest of your product.'
+            asideTitle: 'Votre espace Zando RDC',
+            asideDescription: 'Connectez-vous pour retrouver votre compte Zando RDC.',
+            asideFootnote: 'La découverte de fournisseurs locaux, avec l’équipe Zando.'
           }
         },
         loadComponent: () => import('./modules/sign-in/features/sign-in/sign-in').then((c) => c.AuthSignIn)
@@ -24,10 +24,9 @@ const routes: Routes = [
         title: 'Sign Up',
         data: {
           authContent: {
-            asideTitle: 'Create your workspace',
-            asideDescription:
-              'Start from a clean, modular base that is ready for your features without starting from scratch.',
-            asideFootnote: 'Structure your application with authentication flows already aligned to your interface.'
+            asideTitle: 'Votre compte Zando RDC',
+            asideDescription: 'Créez un compte pour accéder à votre espace Zando RDC.',
+            asideFootnote: 'Retrouvez vos informations dans votre profil.'
           }
         },
         loadComponent: () => import('./modules/sign-up/features/sign-up/sign-up').then((c) => c.AuthSignUp)
@@ -39,8 +38,7 @@ const routes: Routes = [
           authContent: {
             asideTitle: 'Recover your access',
             asideDescription: 'Receive a secure link to regain access to your account and continue your work.',
-            asideFootnote:
-              'The flow stays clear, direct, and consistent with the rest of the authentication experience.'
+            asideFootnote: 'Utilisez l’adresse e-mail associée à votre compte Zando RDC.'
           }
         },
         loadComponent: () =>
@@ -53,7 +51,7 @@ const routes: Routes = [
           authContent: {
             asideTitle: 'Check your inbox',
             asideDescription: 'Open the link sent to your email address before it expires to set a new password.',
-            asideFootnote: 'This step confirms delivery without exposing whether an account exists for the address.'
+            asideFootnote: 'Si votre compte existe, vous recevrez un lien de réinitialisation.'
           }
         },
         loadComponent: () =>
@@ -68,7 +66,7 @@ const routes: Routes = [
           authContent: {
             asideTitle: 'Secure your account',
             asideDescription: 'Choose a new password and finish recovery in a familiar interface.',
-            asideFootnote: 'Error states and primary actions stay visible without changing business logic.'
+            asideFootnote: 'Choisissez un mot de passe que vous n’utilisez pas sur un autre site.'
           }
         },
         loadComponent: () =>

@@ -1,4 +1,4 @@
-import type { ICreateRoleDto, IRoleResponse, IUpdateRoleDto } from '@nx-stack/api-contracts';
+import type { ICreateRoleDto, IRoleResponse, IUpdateRoleDto } from '@zando-rdc/api-contracts';
 
 export interface IUpdateRoleCommand {
   id: IRoleResponse['id'];

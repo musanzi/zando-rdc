@@ -1,6 +1,6 @@
 import { httpResource } from '@angular/common/http';
 import { computed, debounced, effect, linkedSignal, Service, signal } from '@angular/core';
-import type { IRoleResponse, IUserResponse } from '@nx-stack/api-contracts';
+import type { IRoleResponse, IUserResponse } from '@zando-rdc/api-contracts';
 
 import { getApiErrorMessage } from '@web/core/api';
 import type { IPage } from '@web/domains/admin/shared/interfaces';

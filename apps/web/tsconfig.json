@@ -21,7 +21,7 @@
       "@web/domains/*": ["./src/app/domains/*"],
       "@web/shared/*": ["./src/app/shared/*"],
       "@web/environments/*": ["./src/environments/*"],
-      "@nx-stack/api-contracts": ["../../libs/api-contracts/src/index.ts"]
+      "@zando-rdc/api-contracts": ["../../libs/api-contracts/src/index.ts"]
     }
   },
   "angularCompilerOptions": {

@@ -22,7 +22,7 @@ describe('SendWelcomeEmailHandler', () => {
     expect(sendMail).toHaveBeenCalledWith(
       expect.objectContaining({
         to: user.email,
-        subject: 'Bienvenue sur nx-stack',
+        subject: 'Bienvenue sur Zando RDC',
         html: expect.stringContaining('&lt;Alice&gt;'),
         text: expect.stringContaining('000007')
       })

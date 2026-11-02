@@ -5,7 +5,7 @@ import { MatButtonModule } from '@angular/material/button';
 import { MatDialog, MatDialogModule } from '@angular/material/dialog';
 import { MatIconModule } from '@angular/material/icon';
 import { MatTableModule } from '@angular/material/table';
-import type { IRoleResponse } from '@nx-stack/api-contracts';
+import type { IRoleResponse } from '@zando-rdc/api-contracts';
 import { filter } from 'rxjs';
 
 import { Message } from '@web/shared/ui';

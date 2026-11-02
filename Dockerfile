@@ -21,8 +21,9 @@ COPY . .
 RUN pnpm exec nx build api
 
 FROM dependencies AS web-build
+ARG WEB_API_URL=/api
 COPY . .
-RUN pnpm exec nx build web
+RUN pnpm exec nx build web --define.ZANDO_API_URL="'${WEB_API_URL}'"
 
 FROM tooling AS production-dependencies
 COPY package.json pnpm-lock.yaml pnpm-workspace.yaml ./

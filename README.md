@@ -1,47 +1,37 @@
 # Zando RDC
 
-Zando RDC helps customers discover verified local suppliers and contact the Zando team on WhatsApp. The first launch serves Lubumbashi, with supplier discovery by town, category, name, and offering.
-
-Visitors browse without an account. Administrators manage suppliers, verification, towns, categories, and staff. Ambassadors submit suppliers and profile updates for administrator approval. The application covers discovery and WhatsApp contact; deals, bookings, payments, and commissions stay outside its scope.
-
-The public website and staff dashboards launch in French. The design uses dark mode, white text, the supplied Zando logos, and their orange primary color. The shared WhatsApp number is **+243 832 878 704**.
-
-## Product and implementation status
-
-The repository currently provides the Angular and NestJS foundation: authentication, profile management, administrator user and role management, and dashboard statistics. Supplier discovery, verification workflows, contact reports, and the Zando interface are planned implementation work.
-
-- [Product brief](docs/product-brief.md) defines the agreed scope, design direction, and launch acceptance criteria.
-- [Product context](PRODUCT.md) records the audiences, constraints, and brand commitments.
-- [Glossary](GLOSSARY.md) defines the shared domain vocabulary.
-- [Architecture decisions](docs/adr/) explain the WhatsApp contact boundary and HyperLogLog contact estimates.
-- [Implementation issues](https://github.com/musanzi/zando-rdc/issues) track delivery work.
+Zando RDC helps customers discover verified local suppliers in Lubumbashi and contact the Zando team on WhatsApp.
 
 ## Stack and structure
 
-This TypeScript monorepo uses pnpm and Nx to manage three projects:
+The TypeScript monorepo uses pnpm and Nx:
 
 | Path                 | Responsibility                                  | Main technologies                                                        |
 | -------------------- | ----------------------------------------------- | ------------------------------------------------------------------------ |
 | `apps/api`           | Authentication, business logic, and data access | NestJS 12, CQRS, TypeORM, PostgreSQL 18, Redis 8                         |
-| `apps/web`           | Public pages, accounts, and administration      | Angular 22 with SSR, Angular Material, Tailwind CSS 4, NgRx Signal Store |
-| `libs/api-contracts` | Generated API types consumed by the web app     | OpenAPI, `openapi-typescript`                                            |
+| `apps/web`           | Public pages and staff dashboards               | Angular 22 with SSR, Angular Material, Tailwind CSS 4, NgRx Signal Store |
+| `libs/api-contracts` | Generated API types used by the web app         | OpenAPI, `openapi-typescript`                                            |
 
-Authentication uses JWT, Redis-backed sessions, and Google sign-in. The API sends email through SMTP and uses Scalar for API documentation.
+The API uses JWT authentication, Redis-backed sessions, Google sign-in, SMTP email, and Scalar API documentation.
 
-## Getting started
+## Set up with Docker Compose
 
-Use Docker Compose to run the development environment. To run the apps on your host, install Node.js 24.x and pnpm 12.11.2. The `package.json` file pins the pnpm version. Run commands from the repository root.
+Use Docker Compose to run the full development environment. Run commands from the repository root. Give the Docker VM at least 6 GiB of memory. With Colima's default of 2 GiB, the Angular build can run out of memory.
 
 ```sh
 cp -n .env.example .env
 ```
 
-Keep the database credentials from `.env.example`. Add or update these values in `.env`. The example omits `REDIS_URL`.
+Set the following values in `.env`. The API listens on `API_PORT`. The example file sets `WEB_PORT=4300`, but the links below use port 4200.
 
 ```dotenv
 API_PORT=8000
 WEB_PORT=4200
 DB_HOST=db
+DB_PORT=5432
+DB_USERNAME=zando-rdc
+DB_PASSWORD=development-only
+DB_NAME=zando-rdc
 REDIS_URL=redis://redis:6379
 MAIL_HOST=mailhog
 MAIL_PORT=1025
@@ -54,29 +44,35 @@ GOOGLE_REDIRECT_URI=http://localhost:8000/auth/google/redirect
 FRONTEND_URI=http://localhost:4200
 ```
 
-The Google OAuth placeholders let the API start locally. To use Google sign-in, replace them with real credentials. Leave SMTP credentials empty for MailHog.
+Leave `MAIL_USERNAME` and `MAIL_PASSWORD` empty for Mailpit. The Compose service keeps the name `mailhog`, so `MAIL_HOST=mailhog` still works. Include `REDIS_URL`, because `.env.example` omits it. The Google placeholders let the API start. Replace them with real credentials to use Google sign-in.
+
+Start the containers, apply migrations, seed the database, and watch for file changes:
 
 ```sh
-docker compose -f compose.dev.yml up -d --build
-docker compose -f compose.dev.yml exec api pnpm db:up
-docker compose -f compose.dev.yml exec api pnpm db:seed
-docker compose -f compose.dev.yml watch
+docker compose -f compose.dev.yml -p zando up -d --build
+docker compose -f compose.dev.yml -p zando exec api pnpm db:up
+docker compose -f compose.dev.yml -p zando exec api pnpm db:seed
+docker compose -f compose.dev.yml -p zando watch
 ```
 
-Open the [web app](http://localhost:4200), [API docs](http://localhost:8000/docs), or [MailHog inbox](http://localhost:8025). The API runs at `http://localhost:8000` and exposes its schema at `/openapi.json`.
-
-The seed creates two accounts:
+Open the [web app](http://localhost:4200), [API docs](http://localhost:8000/docs), or [Mailpit inbox](http://localhost:8025). The API runs at `http://localhost:8000` and publishes its schema at `/openapi.json`. Sign in with a seed account:
 
 | Email             | Password    |
 | ----------------- | ----------- |
 | `admin@admin.com` | `admin1234` |
 | `user@user.com`   | `user1234`  |
 
-Run the seed only with development data. Each run resets these accounts' passwords and roles.
+The seed creates or updates these development accounts. Running it again resets their passwords and roles. Run it only against development data.
 
-### Running on the host
+### Run on the host
 
-Run PostgreSQL and Redis locally, and provide an SMTP server. Configure the database through the `DB_*` variables in `.env`. Set `DB_HOST=localhost` and `REDIS_URL=redis://localhost:6379`. Set `MAIL_HOST` and `MAIL_PORT` to your SMTP server's host and port. The supplied Compose files do not publish PostgreSQL or Redis ports to the host.
+Use Node.js 24.x and pnpm 12.11.2. The `packageManager` field in `package.json` pins pnpm.
+
+Run PostgreSQL and Redis locally, and provide an SMTP server. The Compose files do not publish PostgreSQL or Redis ports to the host.
+
+Configure PostgreSQL to match `DB_*` in `.env`. Set `DB_HOST=localhost` and `REDIS_URL=redis://localhost:6379` in `.env`. Set `MAIL_HOST` and `MAIL_PORT` for your SMTP server.
+
+Install dependencies, prepare the database, and start the development servers:
 
 ```sh
 corepack enable
@@ -88,23 +84,29 @@ pnpm dev
 
 ## Everyday commands
 
-| Command                                           | Purpose                                         |
-| ------------------------------------------------- | ----------------------------------------------- |
-| `pnpm dev`                                        | Start both development servers                  |
-| `pnpm dev:api` / `pnpm dev:web`                   | Start one development server                    |
-| `pnpm build`                                      | Build both apps into `dist/apps`                |
-| `pnpm lint`                                       | Lint both apps and type-check shared contracts  |
-| `pnpm start:api` / `WEB_PORT=4200 pnpm start:web` | Run existing production builds                  |
-| `pnpm db:up` / `pnpm db:down`                     | Apply migrations or revert the latest migration |
-| `pnpm db:seed`                                    | Create or reset development accounts            |
-| `pnpm generate:api`                               | Regenerate contracts from the API source        |
-| `pnpm sync:api`                                   | Regenerate contracts and build the web app      |
+| Command                                            | Purpose                                         |
+| -------------------------------------------------- | ----------------------------------------------- |
+| `pnpm dev`                                         | Start both development servers                  |
+| `pnpm dev:api` or `pnpm dev:web`                   | Start one development server                    |
+| `pnpm build`                                       | Build both apps into `dist/apps`                |
+| `pnpm lint` and `pnpm typecheck`                   | Check code quality and types                    |
+| `pnpm start:api` or `WEB_PORT=4200 pnpm start:web` | Run existing production builds                  |
+| `pnpm db:up` or `pnpm db:down`                     | Apply migrations or revert the latest migration |
+| `pnpm db:seed`                                     | Create or reset the development accounts        |
+| `pnpm generate:api`                                | Regenerate the OpenAPI document and types       |
+| `pnpm sync:api`                                    | Regenerate contracts and build the web app      |
 
-`pnpm typecheck` checks both apps and shared contracts. To run a pnpm command in Docker, prefix it with `docker compose -f compose.dev.yml exec api` or `docker compose -f compose.dev.yml exec web`. Database commands build the API first.
+To run a pnpm command in Docker, prefix it with the command for the relevant container:
+
+- API: `docker compose -f compose.dev.yml exec api`
+- Web app: `docker compose -f compose.dev.yml exec web`
+
+Database commands build the API first.
 
 ## API unit tests
 
-Install the locked dependencies with `pnpm install --frozen-lockfile`. Tests run without a database, Redis, SMTP, an HTTP server, or a private environment file.
+Install the locked dependencies with `pnpm install --frozen-lockfile`. Run commands from the repository root.
+The tests need no database, Redis, SMTP, HTTP server, or private environment file.
 
 | Command                                     | Purpose                                |
 | ------------------------------------------- | -------------------------------------- |
@@ -116,39 +118,36 @@ Install the locked dependencies with `pnpm install --frozen-lockfile`. Tests run
 After API behavior changes, run `pnpm test:api` and `pnpm typecheck:api:tests`.
 `pnpm typecheck` also checks API specs. CI runs lint, type checks, unit tests, and builds.
 
-Place `*.spec.ts` files beside the API code under test and import Vitest functions explicitly.
-Use Nest testing modules for dependency-injected providers and call exported helpers directly.
-Mock infrastructure dependencies, such as repositories, mail, and filesystem operations. Keep business logic under test.
+Place `*.spec.ts` files beside the API code under test. Import Vitest functions explicitly.
+Use Nest testing modules for dependency-injected providers. Call exported helpers directly.
+Mock infrastructure dependencies, such as repositories, mail, and filesystem operations. Test the business logic itself.
 
-Test observable business decisions, transformations, errors, and consequential side effects.
+Test observable outcomes and consequential side effects.
 Check that rejected operations do not write data, publish events, or delete files.
-Add regression tests for bug fixes. Skip construction-only tests and straightforward forwarding.
+Add regression tests for bug fixes. Skip tests that only construct an object or check that it forwards a call.
 There is no numeric coverage threshold.
 
-## Coding agents
+## Maintain the application
 
-This repository uses [Matt Pocock's skills](https://github.com/mattpocock/skills) for coding-agent workflows.
-Follow the skills' installation instructions for your agent. Read [AGENTS.md](AGENTS.md) for this repository's conventions and required checks.
+Follow these repository conventions:
 
-Read the relevant guide before you start a task:
+- Follow [CLAUDE.md](CLAUDE.md). Keep API commands, queries, handlers, controllers, DTOs, and entities in their domain modules under `apps/api/src/modules/`. Put migrations and seeds in `apps/api/src/modules/database/`. Split each web domain module into `data-access`, `features`, `interfaces`, and `ui`. Put static assets in `apps/web/public/`.
+- After API changes, run `pnpm generate:api` and commit the changes in `libs/api-contracts`. Import types from `@zando-rdc/api-contracts`. Do not edit generated files manually.
+- The generator exports the schema in Nest preview mode without a running API, database, Redis, or SMTP server. The web build, serve, and typecheck commands run the generator automatically.
+- Run `pnpm lint`, `pnpm typecheck`, `pnpm test`, and `pnpm build` before committing application changes. Format changed files with `pnpm exec prettier --write <paths>`. Git hooks run lint and enforce Conventional Commit messages.
+- Use the supplied logos in `apps/web/public/images/logos/`. The theme uses dark surfaces, white text, and the primary orange `#EE731F`. Keep readable contrast and a visible keyboard focus on orange controls.
 
-- [Issue tracker](docs/agents/issue-tracker.md) explains how to work with issues and specs in GitHub Issues for `musanzi/zando-rdc`.
-- [Triage labels](docs/agents/triage-labels.md) lists the labels to use when triaging issues.
-- [Domain docs](docs/agents/domain.md) specifies where to keep the shared glossary and architectural decision records.
+## Deploy the application
 
-Use the installed skill that matches your task. Examples include `tdd` for test-first development, `diagnosing-bugs` for debugging, and `code-review` for reviewing changes.
-For frontend implementation, use the `angular-developer` skill required by `AGENTS.md`.
+Keep `.env` private. Before deployment, configure real database credentials, secrets, Google OAuth, SMTP, `MAIL_FROM`, and `FRONTEND_URI`.
+The web build reads the API URL from `WEB_API_URL`, which defaults to `/api`. With that default, configure your reverse proxy to strip `/api` and forward requests to the API. For a separate API origin, set its HTTPS URL without a trailing slash, then rebuild the web image. Set `WEB_ALLOWED_HOSTS` to the comma-separated web hostnames, without schemes, paths, or ports.
 
-## Maintenance and deployment
-
-- Follow [AGENTS.md](AGENTS.md). API modules use CQRS and expose their own queries and commands. Web code separates data access, features, interfaces, and presentational UI.
-- After API changes, run `pnpm generate:api`. The command builds the API, exports `libs/api-contracts/openapi.json` in Nest preview mode, and generates the shared types. It does not need a running API, database, Redis, or SMTP server. The web app's build, serve, and typecheck targets also run these steps. To use another schema, set `OPENAPI_INPUT` to a schema URL or a local JSON or YAML file.
-- Import shared types through the API contracts alias configured in [tsconfig.base.json](tsconfig.base.json) and commit the OpenAPI document and generated types. Never edit generated files manually.
-- Before you commit application changes, run `pnpm lint`, `pnpm typecheck`, `pnpm test`, and `pnpm build`. Git hooks run linting and enforce Conventional Commit messages. GitHub Actions runs the same four checks.
-- Before deployment, set the web app's API URLs in `apps/web/src/environments` and its allowed hosts in `apps/web/src/server.ts` to the actual Zando RDC deployment addresses. These configurations still contain starter values. Configure real secrets, Google OAuth, SMTP, `MAIL_FROM`, and `FRONTEND_URI`. Keep `.env` private.
+Before each release, back up PostgreSQL and the uploads volume. Start the production containers:
 
 ```sh
-docker compose -f compose.prod.yml up -d --build
+docker compose -f compose.prod.yml -p zando up -d --build
 ```
 
-Apply migrations separately during deployment. Back up PostgreSQL and uploaded files before releases. Compose stores PostgreSQL data, Redis data, and uploads in named volumes. `down` preserves those volumes. `down -v` deletes them.
+Apply migrations separately during deployment.
+
+Compose also persists Redis data. The `down` command preserves volumes. The `down -v` command deletes them.

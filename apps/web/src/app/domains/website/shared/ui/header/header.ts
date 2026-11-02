@@ -17,7 +17,7 @@ export class WebsiteHeader {
   protected isMenuOpen = signal(false);
 
   protected links = NAVIGATION_LINKS;
-  protected solidHeader = computed(() => this.isScrolled());
+  protected solidHeader = computed(() => this.isScrolled() || this.isMenuOpen());
 
   protected toggleMenu(): void {
     this.isMenuOpen.update((isOpen) => !isOpen);
@@ -35,12 +35,14 @@ export class WebsiteHeader {
     }
 
     return active
-      ? 'border-primary-500 text-gray-950'
-      : 'border-transparent text-gray-700 hover:border-gray-300 hover:text-gray-950';
+      ? 'border-primary-500 text-on-surface'
+      : 'border-transparent text-on-surface-variant hover:border-outline-variant hover:text-on-surface';
   }
 
   protected mobileNavLinkClasses(active: boolean): string {
-    return active ? 'bg-primary-50 text-primary-700' : 'text-gray-700 hover:bg-gray-100 hover:text-gray-950';
+    return active
+      ? 'bg-primary-container text-primary'
+      : 'text-on-surface-variant hover:bg-surface-container hover:text-on-surface';
   }
 
   protected updateScrolledState(): void {

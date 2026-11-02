@@ -1,10 +1,9 @@
 import { Component } from '@angular/core';
-import { MatIconModule } from '@angular/material/icon';
 import { RouterLink } from '@angular/router';
 
 @Component({
   selector: 'website-footer',
-  imports: [RouterLink, MatIconModule],
+  imports: [RouterLink],
   templateUrl: './footer.html'
 })
 export class WebsiteFooter {

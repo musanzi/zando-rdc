@@ -49,7 +49,7 @@ export const appConfig: ApplicationConfig = {
     provideNativeDateAdapter(),
     provideIcons(),
     provideTheming({
-      primary: '#006da4',
+      primary: '#EE731F',
       error: '#dc2626'
     })
   ]

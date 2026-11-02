@@ -7,7 +7,7 @@ import { MatDialog, MatDialogModule } from '@angular/material/dialog';
 import { MatIconModule } from '@angular/material/icon';
 import { MatPaginatorModule, PageEvent } from '@angular/material/paginator';
 import { MatTableModule } from '@angular/material/table';
-import type { IUserResponse } from '@nx-stack/api-contracts';
+import type { IUserResponse } from '@zando-rdc/api-contracts';
 import { filter } from 'rxjs';
 
 import { Message } from '@web/shared/ui';

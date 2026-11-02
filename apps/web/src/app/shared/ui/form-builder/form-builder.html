@@ -1,6 +1,6 @@
 <div class="flex flex-col gap-5">
   <div class="flex items-center justify-between gap-4">
-    <p class="text-sm text-neutral-500">
+    <p class="text-sm text-on-surface-variant">
       {{ questionsCount() }} {{ questionsCount() === 1 ? 'question' : 'questions' }}
     </p>
     <button matButton="outlined" type="button" (click)="addSection()">
@@ -91,7 +91,7 @@
               </div>
 
               @if (hasOptions(question.type)) {
-                <div class="rounded-md bg-neutral-50 p-4">
+                <div class="rounded-md bg-surface-container p-4">
                   <p class="mb-3 text-sm font-medium">Answer options</p>
                   <div class="flex flex-col gap-2">
                     @for (option of question.options ?? []; track $index; let optionIndex = $index) {
@@ -158,8 +158,8 @@
               </div>
             </mat-card>
           } @empty {
-            <div class="rounded-md border border-dashed border-neutral-300 px-4 py-10 text-center">
-              <p class="text-sm text-neutral-500">This section contains no questions.</p>
+            <div class="rounded-md border border-dashed border-outline-variant px-4 py-10 text-center">
+              <p class="text-sm text-on-surface-variant">This section contains no questions.</p>
             </div>
           }
         </div>
@@ -171,8 +171,8 @@
       </div>
     </mat-card>
   } @empty {
-    <div class="rounded-xl border border-dashed border-neutral-300 px-5 py-12 text-center">
-      <p class="text-sm text-neutral-500">Start by adding a section.</p>
+    <div class="rounded-xl border border-dashed border-outline-variant px-5 py-12 text-center">
+      <p class="text-sm text-on-surface-variant">Start by adding a section.</p>
       <button matButton="filled" class="mt-4" type="button" (click)="addSection()">Add section</button>
     </div>
   }

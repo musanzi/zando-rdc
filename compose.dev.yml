@@ -1,4 +1,4 @@
-name: nx-stack
+name: zando-rdc
 services:
   api:
     build:
@@ -49,8 +49,8 @@ services:
           target: /app/libs/api-contracts/src
           initial_sync: true
   mailhog:
-    image: mailhog/mailhog:v1.0.1
-    platform: linux/amd64
+    # Keep the SMTP hostname compatible with existing MAIL_HOST=mailhog settings.
+    image: axllent/mailpit:v1.33.0
     restart: unless-stopped
     ports:
       - '8025:8025'

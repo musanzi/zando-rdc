@@ -1,11 +1,22 @@
 @defer (on immediate) {
   <div class="flex min-h-screen w-full flex-auto">
-    <main class="flex min-w-0 flex-1 items-center justify-center bg-white p-4 sm:p-12">
-      <router-outlet (activate)="updateContent()" />
+    <main class="flex min-w-0 flex-1 items-center justify-center bg-surface p-4 sm:p-12">
+      <div class="w-full max-w-md">
+        <a href="/" class="mb-8 inline-flex items-center gap-3 text-xl font-semibold" aria-label="Zando RDC, accueil">
+          <img
+            src="/images/logos/IMG_20260901_202737_148.png"
+            alt=""
+            width="1219"
+            height="1240"
+            class="size-10 object-contain" />
+          Zando RDC
+        </a>
+        <router-outlet (activate)="updateContent()" />
+      </div>
     </main>
 
     <aside
-      class="relative hidden min-h-screen min-w-0 flex-1 items-center justify-center overflow-hidden border-l bg-neutral-950 p-8 sm:px-12 md:flex">
+      class="relative hidden min-h-screen min-w-0 flex-1 items-center justify-center overflow-hidden border-l bg-background p-8 sm:px-12 md:flex">
       <svg
         class="pointer-events-none absolute inset-0"
         viewBox="0 0 960 540"
@@ -13,14 +24,14 @@
         height="100%"
         preserveAspectRatio="xMidYMax slice"
         aria-hidden="true">
-        <g class="text-neutral-700/25" fill="none" stroke="currentColor" stroke-width="100">
+        <g class="text-on-surface-variant/25" fill="none" stroke="currentColor" stroke-width="100">
           <circle r="234" cx="196" cy="23" />
           <circle r="234" cx="790" cy="491" />
         </g>
       </svg>
 
       <svg
-        class="absolute -top-16 -right-16 text-neutral-700"
+        class="absolute -top-16 -right-16 text-on-surface-variant"
         viewBox="0 0 220 192"
         width="220"
         height="192"
@@ -36,8 +47,8 @@
 
       <div class="relative z-10 w-full max-w-2xl">
         <div class="text-5xl font-bold text-white">{{ content().asideTitle }}</div>
-        <div class="mt-6 text-xl text-neutral-500">{{ content().asideDescription }}</div>
-        <div class="mt-12 font-medium tracking-tight text-neutral-500">
+        <div class="mt-6 text-xl text-on-surface-variant">{{ content().asideDescription }}</div>
+        <div class="mt-12 font-medium tracking-tight text-on-surface-variant">
           {{ content().asideFootnote }}
         </div>
       </div>

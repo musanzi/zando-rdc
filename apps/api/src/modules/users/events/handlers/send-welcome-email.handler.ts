@@ -11,9 +11,9 @@ export class SendWelcomeEmailHandler implements IEventHandler<WelcomeUserEvent> 
   async handle(event: WelcomeUserEvent): Promise<void> {
     try {
       const content = buildEmailBody({
-        title: 'Bienvenue sur nx-stack',
+        title: 'Bienvenue sur Zando RDC',
         greetingName: event.user.name,
-        intro: 'Votre compte a bien été créé. Vous pouvez maintenant vous connecter et commencer à utiliser nx-stack.',
+        intro: 'Votre compte a bien été créé. Vous pouvez maintenant vous connecter et commencer à utiliser Zando RDC.',
         highlight: event.defaultPassword
           ? {
               label: 'Mot de passe temporaire',
@@ -27,7 +27,7 @@ export class SendWelcomeEmailHandler implements IEventHandler<WelcomeUserEvent> 
 
       await this.mailerService.sendMail({
         to: event.user.email,
-        subject: 'Bienvenue sur nx-stack',
+        subject: 'Bienvenue sur Zando RDC',
         ...content
       });
     } catch {

@@ -1,4 +1,4 @@
-import type { ICreateUserDto, IUpdatePasswordDto } from '@nx-stack/api-contracts';
+import type { ICreateUserDto, IUpdatePasswordDto } from '@zando-rdc/api-contracts';
 
 export type IProfileFormModel = Pick<ICreateUserDto, 'name' | 'email'>;
 

@@ -48,7 +48,7 @@ import { NAVIGATION } from '@web/domains/user/shared/data';
         </mat-sidenav>
 
         <mat-sidenav-content class="flex flex-col lg:h-dvh lg:overflow-hidden">
-          <div class="flex items-center border-b bg-white px-4 py-2.5 text-neutral-950">
+          <div class="flex items-center border-b bg-surface px-4 py-2.5 text-on-surface">
             <button matIconButton aria-label="Ouvrir ou fermer le menu" (click)="sidenav.toggle()">
               <mat-icon svgIcon="panel-left" />
             </button>

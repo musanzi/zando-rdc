@@ -1,4 +1,4 @@
-import type { ICreateUserDto, IRoleResponse, IUpdateUserDto, IUserResponse } from '@nx-stack/api-contracts';
+import type { ICreateUserDto, IRoleResponse, IUpdateUserDto, IUserResponse } from '@zando-rdc/api-contracts';
 
 export interface IUpdateUserCommand {
   id: IUserResponse['id'];

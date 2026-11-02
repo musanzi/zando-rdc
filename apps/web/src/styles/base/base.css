@@ -5,7 +5,17 @@
   /* Enable keyword support for size interpolation */
   :root {
     interpolate-size: allow-keywords;
-    color-scheme: light;
+    color-scheme: dark;
+  }
+
+  ::selection {
+    background: var(--color-primary);
+    color: var(--color-on-primary);
+  }
+
+  * {
+    scrollbar-color: var(--color-outline) var(--color-background);
+    text-underline-offset: 0.2em;
   }
 
   /* Ensure root elements fill the viewport */
@@ -45,7 +55,7 @@
   ::before,
   ::backdrop,
   ::file-selector-button {
-    border-color: var(--color-neutral-200);
+    border-color: var(--color-outline-variant);
   }
 
   /* Disable focus outline by default */
@@ -64,7 +74,7 @@
 
   /* Base colors */
   body {
-    background-color: var(--color-neutral-100);
-    color: var(--color-neutral-950);
+    background-color: var(--color-background);
+    color: var(--color-on-background);
   }
 }

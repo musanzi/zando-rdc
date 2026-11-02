@@ -81,7 +81,7 @@ import { ApiResponseInterceptor } from './shared/interceptors';
         },
         defaults: {
           from:
-            config.get('MAIL_FROM') || `nx-stack Support <${config.get('MAIL_USERNAME') || 'support@nx-stack.local'}>`
+            config.get('MAIL_FROM') || `Zando RDC Support <${config.get('MAIL_USERNAME') || 'support@zando-rdc.local'}>`
         }
       })
     }),

@@ -32,36 +32,36 @@ const escapeHtml = (value: string): string =>
     .replace(/'/g, '&#39;');
 
 const paragraph = (value: string): string =>
-  `<p style="margin:0 0 20px;color:#475569;font-size:16px;line-height:26px;overflow-wrap:break-word;">${escapeHtml(value)}</p>`;
+  `<p style="margin:0 0 20px;color:#c7c7c7;font-size:16px;line-height:26px;overflow-wrap:break-word;">${escapeHtml(value)}</p>`;
 
 export const buildEmailBody = (options: EmailTemplateOptions): EmailContent => {
   const action = options.action
     ? `<table role="presentation" border="0" cellpadding="0" cellspacing="0" class="email-action" style="margin:8px 0 24px;">
         <tr>
-          <td align="center" bgcolor="#2563eb" style="border-radius:6px;mso-padding-alt:14px 24px;">
-            <a href="${escapeHtml(options.action.url)}" style="display:block;padding:14px 24px;border:1px solid #2563eb;border-radius:6px;color:#ffffff;font-size:15px;font-weight:600;line-height:22px;text-align:center;text-decoration:none;mso-padding-alt:0;">${escapeHtml(options.action.label)}</a>
+          <td align="center" bgcolor="#EE731F" style="border-radius:6px;mso-padding-alt:14px 24px;">
+            <a href="${escapeHtml(options.action.url)}" style="display:block;padding:14px 24px;border:1px solid #EE731F;border-radius:6px;color:#121212;font-size:15px;font-weight:600;line-height:22px;text-align:center;text-decoration:none;mso-padding-alt:0;">${escapeHtml(options.action.label)}</a>
           </td>
         </tr>
       </table>
-      <p style="margin:0 0 8px;color:#64748b;font-size:13px;line-height:20px;">Si le lien ne fonctionne pas, copiez cette adresse dans votre navigateur :</p>
+      <p style="margin:0 0 8px;color:#c7c7c7;font-size:13px;line-height:20px;">Si le lien ne fonctionne pas, copiez cette adresse dans votre navigateur :</p>
       <p style="margin:0 0 24px;font-size:13px;line-height:20px;word-break:break-all;overflow-wrap:anywhere;">
-        <a href="${escapeHtml(options.action.url)}" style="color:#2563eb;text-decoration:underline;">${escapeHtml(options.action.url)}</a>
+        <a href="${escapeHtml(options.action.url)}" style="color:#EE731F;text-decoration:underline;">${escapeHtml(options.action.url)}</a>
       </p>`
     : '';
 
   const highlight = options.highlight
     ? `<table role="presentation" border="0" cellpadding="0" cellspacing="0" width="100%" style="margin:4px 0 24px;table-layout:fixed;">
         <tr>
-          <td bgcolor="#f8fafc" style="padding:20px;border:1px solid #e2e8f0;border-radius:6px;">
-            <p style="margin:0 0 8px;color:#64748b;font-size:13px;line-height:20px;">${escapeHtml(options.highlight.label)}</p>
-            <p style="margin:0;color:#0f172a;font-family:Consolas,'Courier New',monospace;font-size:20px;font-weight:600;line-height:28px;word-break:break-all;overflow-wrap:anywhere;">${escapeHtml(options.highlight.value)}</p>
+          <td bgcolor="#292929" style="padding:20px;border:1px solid #454545;border-radius:6px;">
+            <p style="margin:0 0 8px;color:#c7c7c7;font-size:13px;line-height:20px;">${escapeHtml(options.highlight.label)}</p>
+            <p style="margin:0;color:#ffffff;font-family:Consolas,'Courier New',monospace;font-size:20px;font-weight:600;line-height:28px;word-break:break-all;overflow-wrap:anywhere;">${escapeHtml(options.highlight.value)}</p>
           </td>
         </tr>
       </table>`
     : '';
 
   const note = options.note
-    ? `<p style="margin:0 0 24px;color:#64748b;font-size:13px;line-height:21px;overflow-wrap:break-word;">${escapeHtml(options.note)}</p>`
+    ? `<p style="margin:0 0 24px;color:#c7c7c7;font-size:13px;line-height:21px;overflow-wrap:break-word;">${escapeHtml(options.note)}</p>`
     : '';
 
   const html = `<!doctype html>
@@ -82,8 +82,8 @@ export const buildEmailBody = (options: EmailTemplateOptions): EmailContent => {
       }
     </style>
   </head>
-  <body style="margin:0;padding:0;width:100%;background-color:#f1f5f9;font-family:Arial,Helvetica,sans-serif;">
-    <table role="presentation" border="0" cellpadding="0" cellspacing="0" width="100%" bgcolor="#f1f5f9">
+  <body style="margin:0;padding:0;width:100%;background-color:#121212;font-family:Arial,Helvetica,sans-serif;">
+    <table role="presentation" border="0" cellpadding="0" cellspacing="0" width="100%" bgcolor="#121212">
       <tr>
         <td align="center" class="email-wrapper" style="padding:48px 24px;">
           <!--[if mso]>
@@ -91,9 +91,9 @@ export const buildEmailBody = (options: EmailTemplateOptions): EmailContent => {
           <![endif]-->
           <table role="presentation" border="0" cellpadding="0" cellspacing="0" width="100%" style="max-width:600px;table-layout:fixed;">
             <tr>
-              <td bgcolor="#ffffff" class="email-content" style="padding:40px;border:1px solid #e2e8f0;border-radius:6px;">
-                <p style="margin:0 0 28px;color:#64748b;font-size:14px;font-weight:700;line-height:20px;letter-spacing:1px;">nx-stack</p>
-                <h1 class="email-title" style="margin:0 0 28px;color:#0f172a;font-size:28px;font-weight:700;line-height:36px;overflow-wrap:break-word;">${escapeHtml(options.title)}</h1>
+              <td bgcolor="#1c1c1c" class="email-content" style="padding:40px;border:1px solid #454545;border-radius:6px;">
+                <p style="margin:0 0 28px;color:#c7c7c7;font-size:14px;font-weight:700;line-height:20px;letter-spacing:1px;">Zando RDC</p>
+                <h1 class="email-title" style="margin:0 0 28px;color:#ffffff;font-size:28px;font-weight:700;line-height:36px;overflow-wrap:break-word;">${escapeHtml(options.title)}</h1>
 
                 ${paragraph(`Bonjour ${options.greetingName},`)}
 
@@ -109,8 +109,8 @@ export const buildEmailBody = (options: EmailTemplateOptions): EmailContent => {
 
                 <table role="presentation" border="0" cellpadding="0" cellspacing="0" width="100%" style="margin-top:8px;">
                   <tr>
-                    <td style="padding-top:24px;border-top:1px solid #e2e8f0;">
-                      <p style="margin:0;color:#64748b;font-size:14px;line-height:22px;">L'équipe <strong style="color:#334155;">nx-stack</strong></p>
+                    <td style="padding-top:24px;border-top:1px solid #454545;">
+                      <p style="margin:0;color:#c7c7c7;font-size:14px;line-height:22px;">L'équipe <strong style="color:#ffffff;">Zando RDC</strong></p>
                     </td>
                   </tr>
                 </table>

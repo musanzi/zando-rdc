@@ -1,4 +1,4 @@
-#nx-stack-web {
+#zando-rdc-web {
   /* ------------------------------------------------------------------------ */
   /* Styles                                                                   */
   /* ------------------------------------------------------------------------ */
@@ -46,8 +46,8 @@
     --kbd-border-radius: 0.25rem; /* 4px */
 
     /* Color */
-    --kbd-bg-color: var(--color-neutral-100);
-    --kbd-text-color: var(--color-neutral-700);
-    --kbd-border-color: var(--color-neutral-300);
+    --kbd-bg-color: var(--color-surface-container);
+    --kbd-text-color: var(--color-on-surface);
+    --kbd-border-color: var(--color-outline);
   }
 }

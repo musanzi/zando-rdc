@@ -1,4 +1,4 @@
-#nx-stack-web {
+#zando-rdc-web {
   .admin-side-panel {
     --mat-dialog-container-shape: 0;
 
@@ -121,54 +121,42 @@
   /* Color                                                                    */
   /* ------------------------------------------------------------------------ */
 
-  /* Background */
-  --mat-sys-background: var(--color-neutral-100);
-  --mat-sys-on-background: var(--color-neutral-950);
-
-  /* Surface */
-  --mat-sys-surface: var(--color-neutral-100);
-  --mat-sys-surface-dim: var(--color-neutral-100);
-  --mat-sys-surface-bright: var(--color-white);
-  --mat-sys-surface-tint: var(--color-primary-50);
-  --mat-sys-surface-variant: var(--color-neutral-50);
-  --mat-sys-surface-container-lowest: var(--color-white);
-  --mat-sys-surface-container-low: var(--color-neutral-50);
-  --mat-sys-surface-container: var(--color-neutral-100);
-  --mat-sys-surface-container-high: var(--color-neutral-200);
-  --mat-sys-surface-container-highest: var(--color-neutral-300);
-  --mat-sys-on-surface: var(--color-neutral-950);
-  --mat-sys-on-surface-variant: var(--color-neutral-600);
-
-  /* Primary */
+  /* Shared dark surfaces and accessible brand colors. */
+  --mat-sys-background: #121212;
+  --mat-sys-on-background: #ffffff;
+  --mat-sys-surface: #1c1c1c;
+  --mat-sys-surface-dim: #121212;
+  --mat-sys-surface-bright: #353535;
+  --mat-sys-surface-tint: var(--color-primary-600);
+  --mat-sys-surface-variant: #292929;
+  --mat-sys-surface-container-lowest: #121212;
+  --mat-sys-surface-container-low: #181818;
+  --mat-sys-surface-container: #222222;
+  --mat-sys-surface-container-high: #292929;
+  --mat-sys-surface-container-highest: #353535;
+  --mat-sys-on-surface: #ffffff;
+  --mat-sys-on-surface-variant: #c7c7c7;
   --mat-sys-primary: var(--color-primary-600);
-  --mat-sys-primary-container: var(--color-primary-50);
+  --mat-sys-primary-container: #49260f;
   --mat-sys-primary-fixed: var(--color-primary-600);
   --mat-sys-primary-fixed-dim: var(--color-primary-500);
-  --mat-sys-on-primary: var(--color-primary-50);
-  --mat-sys-on-primary-container: var(--color-primary-950);
-  --mat-sys-on-primary-fixed: var(--color-primary-50);
-  --mat-sys-on-primary-fixed-variant: var(--color-primary-50);
-
-  /* Error */
-  --mat-sys-error: var(--color-error-600);
-  --mat-sys-error-container: var(--color-error-50);
-  --mat-sys-on-error: var(--color-error-50);
-  --mat-sys-on-error-container: var(--color-error-950);
-
-  /* Others */
-  --mat-sys-outline: var(--color-neutral-300);
-  --mat-sys-outline-variant: var(--color-neutral-300);
-  --mat-sys-scrim: var(--color-neutral-950);
-  --mat-sys-shadow: var(--color-black);
-
-  /* Inverse */
-  --mat-sys-inverse-primary: var(--color-primary-600);
-  --mat-sys-inverse-surface: var(--color-neutral-900);
-  --mat-sys-inverse-on-surface: var(--color-white);
-
-  /* Angular Material fixed color extensions */
-  --mat-sys-neutral-variant20: var(--color-neutral-900);
-  --mat-sys-neutral10: var(--color-neutral-950);
+  --mat-sys-on-primary: #121212;
+  --mat-sys-on-primary-container: #ffd9bf;
+  --mat-sys-on-primary-fixed: #121212;
+  --mat-sys-on-primary-fixed-variant: #121212;
+  --mat-sys-error: #ffb4ab;
+  --mat-sys-error-container: #690005;
+  --mat-sys-on-error: #690005;
+  --mat-sys-on-error-container: #ffdad6;
+  --mat-sys-outline: #888888;
+  --mat-sys-outline-variant: #454545;
+  --mat-sys-scrim: #000000;
+  --mat-sys-shadow: #000000;
+  --mat-sys-inverse-primary: #914000;
+  --mat-sys-inverse-surface: #eeeeee;
+  --mat-sys-inverse-on-surface: #121212;
+  --mat-sys-neutral-variant20: #353535;
+  --mat-sys-neutral10: #1c1c1c;
 
   /* Angular Material shadow extensions */
   --mat-sys-level0:
@@ -231,7 +219,7 @@
   /* Badge                                                                    */
   /* ------------------------------------------------------------------------ */
   --mat-badge-background-color: var(--color-primary-600);
-  --mat-badge-text-color: var(--color-primary-50);
+  --mat-badge-text-color: var(--color-on-primary);
 
   /* ------------------------------------------------------------------------ */
   /* Bottom Sheet                                                             */
@@ -276,7 +264,7 @@
 
   .mat-mdc-button-base {
     --mat-icon-color: currentColor;
-    /* Primary actions: solid orange with white labels. */
+    /* Primary actions: solid orange with dark labels. */
     --mat-button-filled-container-color: var(--color-secondary);
     --mat-button-filled-label-text-color: var(--color-on-secondary);
     --mat-button-protected-container-color: var(--color-secondary);
@@ -285,14 +273,14 @@
     --mat-button-protected-ripple-color: color-mix(in oklch, var(--color-on-secondary) 10%, transparent);
 
     /* Tonal actions have a subtle fill; outlined and text actions stay distinct. */
-    --mat-button-tonal-container-color: color-mix(in srgb, var(--color-secondary) 15%, white);
+    --mat-button-tonal-container-color: color-mix(in srgb, var(--color-secondary) 15%, var(--mat-sys-surface));
     --mat-button-tonal-label-text-color: var(--color-primary-600);
     --mat-button-tonal-state-layer-color: var(--color-primary-600);
     --mat-button-tonal-ripple-color: color-mix(in oklch, var(--color-primary-600) 10%, transparent);
     --mat-button-text-label-text-color: var(--color-primary-600);
     --mat-button-text-state-layer-color: var(--color-primary-600);
     --mat-button-text-ripple-color: color-mix(in oklch, var(--color-primary-600) 10%, transparent);
-    --mat-button-outlined-outline-color: var(--color-neutral-300);
+    --mat-button-outlined-outline-color: var(--mat-sys-outline-variant);
 
     &:focus-visible:not(.cdk-program-focused) {
       outline-color: var(--color-primary-600);
@@ -392,13 +380,13 @@
   /* Card                                                                     */
   /* ------------------------------------------------------------------------ */
   --mat-card-elevated-container-shape: 0.75rem;
-  --mat-card-elevated-container-color: var(--color-white);
+  --mat-card-elevated-container-color: var(--mat-sys-surface-container-low);
 
   --mat-card-filled-container-shape: 0.75rem;
-  --mat-card-filled-container-color: var(--color-neutral-100);
+  --mat-card-filled-container-color: var(--mat-sys-surface-container);
 
   --mat-card-outlined-container-shape: 0.75rem;
-  --mat-card-outlined-container-color: var(--color-white);
+  --mat-card-outlined-container-color: var(--mat-sys-surface-container-low);
 
   mat-card {
     /* Raised */
@@ -419,10 +407,10 @@
       }
 
       .mat-mdc-card-content {
-        background: var(--color-white);
+        background: var(--mat-sys-surface-container-low);
         border-radius: 0.5rem;
         padding: 1rem;
-        border: 1px solid var(--color-neutral-200);
+        border: 1px solid var(--mat-sys-outline-variant);
       }
     }
   }
@@ -432,8 +420,8 @@
   /* ------------------------------------------------------------------------ */
   --mat-checkbox-state-layer-size: 2.25rem;
 
-  /* Keep the secondary accent scoped to interactive controls. Use white text
-     on orange fills and dark text on light containers. */
+  /* Keep the secondary accent scoped to interactive controls. Use dark text
+     on orange fills and orange text on dark containers. */
   .mat-mdc-button-base,
   .mat-mdc-form-field,
   .mat-mdc-checkbox,
@@ -442,13 +430,13 @@
   .mat-mdc-select-panel {
     --mat-sys-primary: var(--color-secondary);
     --mat-sys-on-primary: var(--color-on-secondary);
-    --mat-sys-primary-container: color-mix(in srgb, var(--color-secondary) 15%, white);
+    --mat-sys-primary-container: color-mix(in srgb, var(--color-secondary) 15%, var(--mat-sys-surface));
     --mat-sys-on-primary-container: var(--color-primary-600);
   }
 
   .mat-mdc-select-panel {
     --mat-option-selected-state-label-text-color: var(--color-primary-600);
-    --mat-option-selected-state-layer-color: color-mix(in srgb, var(--color-secondary) 15%, white);
+    --mat-option-selected-state-layer-color: color-mix(in srgb, var(--color-secondary) 15%, var(--mat-sys-surface));
   }
 
   /* ------------------------------------------------------------------------ */
@@ -460,9 +448,9 @@
   .team-status,
   .participation-status,
   .reminder-status {
-    --status-color: var(--color-neutral-600);
-    --status-background: var(--color-neutral-100);
-    --status-border: var(--color-neutral-200);
+    --status-color: var(--mat-sys-on-surface-variant);
+    --status-background: var(--mat-sys-surface-container);
+    --status-border: var(--mat-sys-outline-variant);
     --mat-chip-container-height: 1.625rem;
     --mat-chip-container-shape-radius: 9999px;
     --mat-chip-label-text-size: 0.75rem;
@@ -513,7 +501,7 @@
   .catalog-status[data-status='inactive'],
   .team-status[data-status='inactive'],
   .reminder-status[data-status='pending'] {
-    --status-background: var(--color-white);
+    --status-background: var(--mat-sys-surface-container-low);
   }
 
   /* ------------------------------------------------------------------------ */
@@ -537,11 +525,11 @@
   /* Dialog                                                                   */
   /* ------------------------------------------------------------------------ */
   --mat-dialog-container-shape: 0.375rem;
-  --mat-dialog-container-color: var(--color-white);
+  --mat-dialog-container-color: var(--mat-sys-surface-container-low);
 
   .mat-mdc-dialog-container {
-    --color-surface: var(--color-white);
-    --mat-sys-surface: var(--color-white);
+    --color-surface: var(--mat-sys-surface-container-low);
+    --mat-sys-surface: var(--mat-sys-surface-container-low);
   }
 
   .mat-mdc-dialog-surface {
@@ -566,7 +554,7 @@
   /* ------------------------------------------------------------------------ */
   /* Datepicker                                                               */
   /* ------------------------------------------------------------------------ */
-  --mat-datepicker-calendar-container-background-color: var(--color-white);
+  --mat-datepicker-calendar-container-background-color: var(--mat-sys-surface-container-low);
 
   --mat-datepicker-calendar-container-elevation-shadow: var(--mat-sys-level2);
   --mat-datepicker-calendar-container-shape: 0.5rem; /* 8px */
@@ -913,15 +901,15 @@
     --form-field-icon-margin-x: -0.125rem; /* -2px */
 
     /* Color */
-    --form-field-text-color: var(--color-neutral-950);
-    --form-field-text-color-error: var(--color-error-500);
-    --form-field-hint-color: var(--color-neutral-500);
-    --form-field-placeholder-color: var(--color-neutral-500);
-    --form-field-affix-color: var(--color-neutral-500);
+    --form-field-text-color: var(--mat-sys-on-surface);
+    --form-field-text-color-error: var(--mat-sys-error);
+    --form-field-hint-color: var(--mat-sys-on-surface-variant);
+    --form-field-placeholder-color: var(--mat-sys-on-surface-variant);
+    --form-field-affix-color: var(--mat-sys-on-surface-variant);
 
-    --form-field-bg-color: var(--color-white);
+    --form-field-bg-color: var(--mat-sys-surface-container-low);
 
-    --form-field-border-color: var(--color-neutral-300);
+    --form-field-border-color: var(--mat-sys-outline);
     --form-field-border-color-error: var(--color-error-600);
 
     --form-field-shadow-color: color-mix(in oklch, var(--color-black), transparent 95%);
@@ -985,16 +973,16 @@
   --mat-list-list-item-one-line-container-height: 2.25rem;
   --mat-list-list-item-label-text-size: var(--text-base);
   --mat-list-list-item-label-text-tracking: var(--tracking-normal);
-  --mat-list-active-indicator-color: var(--color-neutral-200);
+  --mat-list-active-indicator-color: var(--mat-sys-outline-variant);
 
   /* ------------------------------------------------------------------------ */
   /* Menu                                                                     */
   /* ------------------------------------------------------------------------ */
   --mat-menu-container-shape: 0.5rem;
-  --mat-menu-container-color: var(--color-white);
+  --mat-menu-container-color: var(--mat-sys-surface-container-low);
   --mat-menu-divider-bottom-spacing: 0.25rem;
   --mat-menu-divider-top-spacing: 0.25rem;
-  --mat-menu-divider-color: var(--color-neutral-200);
+  --mat-menu-divider-color: var(--mat-sys-outline-variant);
 
   --mat-menu-item-icon-color: currentColor;
   --mat-menu-item-icon-size: 1rem;
@@ -1012,12 +1000,12 @@
   /* ------------------------------------------------------------------------ */
   /* Paginator                                                                */
   /* ------------------------------------------------------------------------ */
-  --mat-paginator-container-background-color: var(--color-white);
+  --mat-paginator-container-background-color: var(--mat-sys-surface-container-low);
 
   /* ------------------------------------------------------------------------ */
   /* Progress Bar                                                             */
   /* ------------------------------------------------------------------------ */
-  --mat-progress-bar-track-color: var(--color-neutral-200);
+  --mat-progress-bar-track-color: var(--mat-sys-outline-variant);
 
   .mdc-linear-progress {
     border-radius: 0.5rem;
@@ -1043,7 +1031,7 @@
   --mat-select-trigger-text-line-height: var(--leading-5); /* 20px */
   --mat-select-trigger-text-tracking: var(--tracking-normal);
 
-  --mat-select-panel-background-color: var(--color-white);
+  --mat-select-panel-background-color: var(--mat-sys-surface-container-low);
 
   .mat-mdc-select-arrow-wrapper {
     height: 1.25rem; /* 20px */
@@ -1062,11 +1050,11 @@
   /* ------------------------------------------------------------------------ */
   /* Sidenav                                                                  */
   /* ------------------------------------------------------------------------ */
-  --mat-sidenav-container-background-color: var(--color-neutral-100);
-  --mat-sidenav-sidenav-background-color: var(--color-neutral-100);
-  --mat-sidenav-content-background-color: var(--color-white);
+  --mat-sidenav-container-background-color: var(--mat-sys-surface-container);
+  --mat-sidenav-sidenav-background-color: var(--mat-sys-surface-container);
+  --mat-sidenav-content-background-color: var(--mat-sys-surface-container-low);
 
-  --mat-sidenav-container-text-color: var(--color-neutral-950);
+  --mat-sidenav-container-text-color: var(--mat-sys-on-surface);
 
   --mat-sidenav-container-shape: 0;
   --mat-sidenav-container-divider-color: transparent;
@@ -1117,7 +1105,7 @@
 
   /* handle icon colors */
   --mat-slide-toggle-unselected-icon-color: color-mix(in oklch, var(--color-black) 40%, transparent);
-  --mat-slide-toggle-selected-icon-color: var(--color-neutral-950);
+  --mat-slide-toggle-selected-icon-color: var(--mat-sys-on-surface);
 
   /* ------------------------------------------------------------------------ */
   /* Slider                                                                   */
@@ -1148,7 +1136,7 @@
   /* Table                                                                    */
   /* ------------------------------------------------------------------------ */
   --mat-table-background-color: transparent;
-  --mat-table-row-item-outline-color: var(--color-neutral-200);
+  --mat-table-row-item-outline-color: var(--mat-sys-outline-variant);
 
   /* Restore the bottom border on last row */
   .mdc-data-table__row:last-child > .mat-mdc-cell {
@@ -1161,7 +1149,7 @@
   /* Tabs                                                                     */
   /* ------------------------------------------------------------------------ */
   --mat-tab-container-height: 2.5rem;
-  --mat-tab-divider-color: var(--color-neutral-200);
+  --mat-tab-divider-color: var(--mat-sys-outline-variant);
   --mat-tab-label-text-font: var(--font-sans);
   --mat-tab-label-text-size: var(--text-base);
   --mat-tab-label-text-line-height: var(--leading-5);

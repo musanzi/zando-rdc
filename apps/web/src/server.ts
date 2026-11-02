@@ -11,7 +11,10 @@ const browserDistFolder = join(import.meta.dirname, '../browser');
 
 const app = express();
 const angularApp = new AngularNodeAppEngine({
-  allowedHosts: ['*.localhost', 'localhost', 'nx-stack.co', '*.nx-stack.co']
+  allowedHosts: (process.env['WEB_ALLOWED_HOSTS'] || 'localhost,127.0.0.1')
+    .split(',')
+    .map((host) => host.trim())
+    .filter(Boolean)
 });
 
 /**

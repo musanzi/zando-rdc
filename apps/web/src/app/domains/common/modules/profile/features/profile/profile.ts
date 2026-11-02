@@ -6,7 +6,7 @@ import { MatFormFieldModule } from '@angular/material/form-field';
 import { MatIconModule } from '@angular/material/icon';
 import { MatInputModule } from '@angular/material/input';
 import { MatTabsModule } from '@angular/material/tabs';
-import type { IUpdateProfileDto } from '@nx-stack/api-contracts';
+import type { IUpdateProfileDto } from '@zando-rdc/api-contracts';
 import { Message } from '@web/shared/ui';
 import { AuthStore } from '@web/domains/auth/shared/data-access';
 import { environment } from '@web/environments/environment';

@@ -3,7 +3,7 @@
   "compilerOptions": {
     "skipLibCheck": true,
     "paths": {
-      "@nx-stack/api-contracts": ["./libs/api-contracts/src/index.ts"]
+      "@zando-rdc/api-contracts": ["./libs/api-contracts/src/index.ts"]
     }
   }
 }

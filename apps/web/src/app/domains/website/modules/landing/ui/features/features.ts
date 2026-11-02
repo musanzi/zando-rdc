@@ -1,27 +1,24 @@
 import { Component } from '@angular/core';
-import { MatIconModule } from '@angular/material/icon';
 
 @Component({
   selector: 'landing-features',
-  imports: [MatIconModule],
   templateUrl: './features.html'
 })
 export class LandingFeatures {
   protected readonly features = [
     {
-      icon: 'route',
-      title: 'Consistent application flow',
-      description: 'Public pages, authentication, and dashboard follow a clear structure from the start.'
+      title: 'Trouver un fournisseur',
+      description: 'La recherche permettra de parcourir les profils par ville, catégorie, nom ou offre.'
     },
     {
-      icon: 'palette',
-      title: 'Clean Material interface',
-      description: 'Angular Material and Tailwind are already combined in a simple styling base.'
+      title: 'Consulter un profil vérifié',
+      description:
+        'Chaque publication sera précédée de contrôles sur l’identité, la localisation et l’activité du fournisseur.'
     },
     {
-      icon: 'layers',
-      title: 'Readable architecture',
-      description: 'Pages compose UI sections while services and stores stay in data-access.'
+      title: 'Contacter l’équipe Zando',
+      description:
+        'Les demandes passeront par notre équipe sur WhatsApp. Les prix et les disponibilités seront discutés hors de la plateforme.'
     }
   ];
 }
