@@ -1,30 +1,23 @@
-# Zando RDC repository guidelines
+# Repository guidelines
 
 ## Project structure
 
-Place code and assets in these directories.
+This pnpm and Nx monorepo manages KBM exhibitor participation. Use these directories:
 
-- `apps/api/src` contains the NestJS API. Organize domain modules under `apps/api/src/modules/`. Keep CQRS commands, queries, handlers, controllers, DTOs, and entities in their domain modules. Put database migrations and seeds in `apps/api/src/modules/database/`.
-- `apps/web/src/app` contains the Angular frontend. Organize each domain module into `data-access`, `features`, `interfaces`, and `ui`. Put code shared across domains in `apps/web/src/app/core/` and `apps/web/src/app/shared/`. Put static assets in `apps/web/public/`.
-- `libs/api-contracts` contains the OpenAPI document and generated TypeScript contracts. Import shared types through the API contracts alias configured in [tsconfig.base.json](tsconfig.base.json).
-- `tools/` contains API generation scripts.
+- `apps/api/src/modules/`: NestJS feature modules with CQRS handlers, DTOs, and TypeORM entities. Put database migrations in `apps/api/src/modules/database/migrations/`.
+- `apps/web/src/app/`: Angular portals organized into `domains/`, `core/`, and `shared/`. Keep state and data access separate from presentational UI.
+- `apps/web/public/`: static assets. Put custom styles in `apps/web/src/styles/`.
+- `libs/api-contracts/`: generated OpenAPI schema and types. Import types through `@kbm-exhibitors/api-contracts`.
 
-Build output goes to `dist/apps/`.
+## Code style and naming
 
-## Development commands
+Use two-space indentation, single quotes, and semicolons. Prettier uses a 120-character print width and omits trailing commas. Follow ESLint and Angular template accessibility rules.
 
-Use Node.js 24.x and pnpm 12.11.2. Run these commands from the repository root.
+Don't write comments in code. Give classes, methods, and functions clear names instead.
 
-- Run `pnpm install --frozen-lockfile` to install locked dependencies.
-- Run `pnpm dev` to serve both apps. To serve one app, run `pnpm dev:api` or `pnpm dev:web`.
-- Run `pnpm build` to build both apps.
-- Run `pnpm lint` to check lint rules.
-- Run `pnpm typecheck` to check TypeScript compatibility.
-- After API changes, run `pnpm generate:api` to regenerate the OpenAPI document and shared types offline. Commit both generated outputs. Regenerate these files rather than edit them by hand.
-- Run `pnpm db:up` to apply migrations.
-- Run `pnpm db:seed` to reset development seed accounts.
+Use kebab-case filenames, PascalCase classes, and camelCase members. Follow neighboring modules and filenames, such as `create-stand.handler.ts`. Use kebab-case for Angular component selectors and camelCase for directive selectors.
 
-For Docker setup and required services, follow [README.md](README.md).
+For frontend implementation, use the angular-developer skill.
 
 ## API testing
 
@@ -33,28 +26,14 @@ For Docker setup and required services, follow [README.md](README.md).
 - Run `pnpm typecheck:api:tests` to check specs, fixtures, and runner configuration. `pnpm typecheck` also includes this check.
 - Place `*.spec.ts` files beside the code under test and import Vitest functions explicitly. Use Nest testing modules for dependency-injected providers and call exported helpers directly.
 - Test observable outcomes and consequential side effects, including effects that must not occur after failure. Mock infrastructure dependencies and keep business logic under test.
-- Add regression tests for bug fixes. Skip construction-only tests and straightforward forwarding. No numeric coverage threshold applies.
-
-## Code style and naming
-
-Use TypeScript with two-space indentation, single quotes, semicolons, a 120-character line width, and no trailing commas.
-Format changed files with `pnpm exec prettier --write <paths>`.
-
-Use kebab-case filenames, PascalCase classes, and camelCase members. Follow existing Angular names such as `users-list.ts` and NestJS suffixes such as `.controller.ts` and `.handler.ts`. ESLint enforces TypeScript rules and Angular template accessibility.
-
-For frontend implementation, use the `angular-developer` skill.
+- Add regression tests for bug fixes. Skip construction-only tests and tests of methods that only forward a call. No numeric coverage threshold applies.
 
 ## Commits and pull requests
 
-Use Conventional Commits, such as `feat:`, `fix(users):`, `docs:`, or `chore:`. Commitlint enforces this format.
-The pre-commit hook runs lint. CI runs lint, type checks, API unit tests, and builds.
+Use a Conventional Commit prefix, such as `feat:`, `fix:`, `refactor(web):`, or `docs:`. Follow it with a concise description. Commitlint enforces this format. The pre-commit hook runs lint.
 
-In each PR, explain the behavior change, link related issues, and list the checks you ran. Include screenshots for visible UI changes. Describe any migration or configuration changes.
+In pull requests, describe the problem, the resulting behavior, and how you checked the changes. Link relevant issues. Include screenshots for visual changes.
 
-## Read task-specific instructions
+## Running servers
 
-Read the relevant document before you start the task.
-
-- Before issue operations, read [Issue tracker](docs/agents/issue-tracker.md). Issues and specs live in GitHub Issues for `musanzi/zando-rdc`.
-- Before you triage issues, read [Triage labels](docs/agents/triage-labels.md). Use the five default labels defined there.
-- Before you explore the codebase, read [Domain docs](docs/agents/domain.md). Use one shared domain context, with `GLOSSARY.md` [Domain context](GLOSSARY.md) at the repository root and architectural decision records in `docs/adr/`.
+The user keeps the development stack running in Docker with `compose.dev.yml`: web on port 4200 (`WEB_PORT`) and API on port 8000. Do not run `pnpm dev`, `pnpm dev:api`, `pnpm dev:web`, `nx serve`, or `docker compose up`, because a second copy of the stack can exhaust the machine's memory. To check behavior, send requests to the running servers with curl. If a server you need is down, ask the user to start it. To validate a change, run `pnpm lint`, `pnpm typecheck`, or `pnpm test:api` instead of a build.
